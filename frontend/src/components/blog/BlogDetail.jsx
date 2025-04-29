@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchPost, addComment, deletePost } from '../../api/index';
 import { WalletContext } from '../../context/WalletContext';
+import { ethers } from 'ethers';
 
 const BlogDetail = () => {
   const { id } = useParams();

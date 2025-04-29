@@ -1,15 +1,15 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies with specific permissions
 RUN npm install
 
-# Install Tailwind CSS and typography plugin
-RUN npm install --save-dev tailwindcss postcss autoprefixer @tailwindcss/typography
+# Install Tailwind CSS and typography plugin (combine with previous npm install to reduce layers)
+COPY tailwind.config.js postcss.config.js ./
 
 # Copy project files
 COPY . .
@@ -17,8 +17,6 @@ COPY . .
 # Build for production
 RUN npm run build
 
-# Install serve to run the application
-RUN npm install -g serve
-
-# Start the application
-CMD ["serve", "-s", "build", "-l", "3000"]
+# Use a simpler approach to serve files
+EXPOSE 3000
+CMD ["npm", "start"]

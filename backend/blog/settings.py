@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'corsheaders',
     
     # Local apps
-    'api',
+    'api.apps.ApiConfig',  # Use the proper app config
 ]
 
 MIDDLEWARE = [
@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'blog_db'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'NAME': os.environ.get('POSTGRES_DB', 'alimirash'),
+        'USER': os.environ.get('POSTGRES_USER', 'alimirash'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'Aa@80233280'),
         'HOST': os.environ.get('DB_HOST', 'db'),
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
