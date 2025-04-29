@@ -8,6 +8,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Install Tailwind CSS and typography plugin
+RUN npm install --save-dev tailwindcss postcss autoprefixer @tailwindcss/typography
+
 # Copy project files
 COPY . .
 
